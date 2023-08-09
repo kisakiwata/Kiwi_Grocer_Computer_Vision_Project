@@ -1,23 +1,21 @@
-# PPOCR_text_recognition
+# Fridge Image Detection POC Repo
 
-Testing out Paddle Paddle OCR text recognition model.
-See details of PPOCR here:
-
-For this, I was testing out an image of food for the project of fridge image recognition project I was running for Kiwi Grocer: http://thekiwigrocer.com
-For this project, I would be running following models:
+I was testing out some images of food items inside the fridge for the Computer Vision project I was running for Kiwi Grocer: http://thekiwigrocer.com
+For this project, I would be running the following models:
 1. Object Detection
    - EfficientDet ('efficientdet_d0_coco17_tpu-32')
-     - This model was used due to the lightness and accuracy of detection 
+     - This model was used due to the lightness and accuracy of the detection 
      - http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d0_coco17_tpu-32.tar.gz
-2. Text Regonition
-   - Paddle Paddle Model: https://github.com/PaddlePaddle/PaddleOCR
-   - Cleaning up and inferring the output file (PPOCR model successfully identified the texts from the images, but the next challenge is to read the result (JSON format) from the model output and infer the product from the output texts.)
+3. Text Recognition
+   -  The difficulty of simply running an object detection model is that it doesn't recognize packaged items as food products and just identifies it as a generic "bottle" etc. Hence, I decided to run a text recognition on top of it.
+   - Paddle Paddle Model was selected because of the accuracy and availability: https://github.com/PaddlePaddle/PaddleOCR
+   - PPOCR model successfully identified the texts from the images, but the next challenge is to read the result (JSON format) from the model output and infer the product from the output texts.
    - Following methods were used to calculate the relationship (closeness of the bounding boxes of each word) to identify which text belongs to which food item
-       - centeroid distances
+       - centroid distances
        - K-means clustering
-       - hierachical clustering
+       - hierarchical clustering
        - sort by (xmin, ymin) combinations of the box location
-       - As a conclusiong, the soring by combination of x-min and y-min was the fastest and least computationally method to identify the closest text
+       - In conclusion, soring by a combination of x-min and y-min was the fastest and least computationally heavy method to identify the closest text amongst each other
        - Next challenge is to group texts by a food item
          
 Example of result image:
