@@ -7,15 +7,15 @@ For this project, I would be running the following models:
      - This model was used due to the lightness and accuracy of the detection 
      - http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d0_coco17_tpu-32.tar.gz
 3. Text Recognition
-   -  The difficulty of simply running an object detection model is that it doesn't recognize packaged items as food products and just identifies it as a generic "bottle" etc. Hence, I decided to run a text recognition on top of it.
-   - Paddle Paddle Model was selected because of the accuracy and availability: https://github.com/PaddlePaddle/PaddleOCR
-   - PPOCR model successfully identified the texts from the images, but the next challenge is to read the result (JSON format) from the model output and infer the product from the output texts.
+   -  The difficulty of simply running an object detection model is that it doesn't recognize packaged items as food products and just identifies them as a generic "bottle" etc. Hence, I decided to run a text recognition model on top of it.
+   - Paddle Paddle Model was selected because of its accuracy and availability: https://github.com/PaddlePaddle/PaddleOCR
+   - PPOCR model successfully identified the texts from the images, but the next challenge is to read the result (JSON format) from the model output and infer the product from the output texts to showcase which product on the market is actually inside the fridge.
    - Following methods were used to calculate the relationship (closeness of the bounding boxes of each word) to identify which text belongs to which food item
        - centroid distances
        - K-means clustering
        - hierarchical clustering
        - sort by (xmin, ymin) combinations of the box location
-       - In conclusion, soring by a combination of x-min and y-min was the fastest and least computationally heavy method to identify the closest text amongst each other
+       - In conclusion, soring by a combination of x-min and y-min was the fastest and least computationally heavy method to identify the closest text among each other.
        - Next challenge is to group texts by a food item
          
 Example of result image:
