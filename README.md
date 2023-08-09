@@ -6,6 +6,7 @@ For this project, I would be running the following models:
    - EfficientDet ('efficientdet_d0_coco17_tpu-32')
      - This model was used due to the lightness and accuracy of the detection 
      - http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d0_coco17_tpu-32.tar.gz
+     - Sending the results to Fast API
 3. Text Recognition
    -  The difficulty of simply running an object detection model is that it doesn't recognize packaged items as food products and just identifies them as a generic "bottle" etc. Hence, I decided to run a text recognition model on top of it.
    - Paddle Paddle Model was selected because of its accuracy and availability: https://github.com/PaddlePaddle/PaddleOCR
